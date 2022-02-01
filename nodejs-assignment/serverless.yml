@@ -26,7 +26,7 @@ functions:
     events:
       - http:
           path: /create/{amount}
-          method: get
+          method: put
 
   deleteLoan:
     name: deleteLoan
@@ -34,7 +34,7 @@ functions:
     events:
       - http:
           path: /delete/{id}
-          method: get
+          method: delete
 
   getLoans:
     name: getLoans
@@ -58,4 +58,4 @@ functions:
     events:
       - http:
           path: /update/{id}
-          method: get
+          method: patch

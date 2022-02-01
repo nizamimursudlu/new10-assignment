@@ -47,7 +47,6 @@ module.exports.updateLoan = async (event, body) => {
                 ":loanStatus": "disbursed"
             }
         };
-        console.log(params);
         const loan = await dynamoDB.update(params).promise();
         return loan
             ? {
