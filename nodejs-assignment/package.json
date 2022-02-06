@@ -20,17 +20,18 @@
     "eslint": "^4.7.2",
     "eslint-plugin-prettier": "^2.1.2",
     "jest": "22.4.3",
-    "prettier": "^1.7.2",
-    "prettier-eslint": "^8.2.0",
+    "prettier": "^2.5.1",
+    "prettier-eslint": "^13.0.0",
     "serverless": "^1.27.3",
-    "serverless-dynamodb-local": "^0.2.30",
-    "serverless-offline": "^3.23.1",
-    "serverless-pseudo-parameters": "^1.4.2"
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-offline": "^8.4.0",
+    "serverless-pseudo-parameters": "^2.6.1"
   },
   "dependencies": {
     "aws-sdk": "^2.1066.0",
     "axios": "^0.25.0",
     "dynamodb": "^1.1.2",
+    "dynamodb-doc": "^1.0.0",
     "joi": "^17.6.0",
     "node": "^16.13.1",
     "uuid": "^8.3.2"

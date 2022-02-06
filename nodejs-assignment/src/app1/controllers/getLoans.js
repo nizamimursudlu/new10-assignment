@@ -1,66 +1,28 @@
-// const Loan = require("../schemaLoan");
-// const dynamodb = require("../dynamoConfig");
+const Loan = require("../models/loansModel");
 
-// module.exports.getLoans = async event => {
-//     try {
-//         dynamodb;
-
-//         const loans = await new Promise((resolve, reject) => {
-//             Loan.scan()
-//                 .loadAll()
-//                 .exec((err, loans) => {
-//                     return err ? reject(err) : resolve(loans.Items);
-//                 });
-//         });
-
-//         return {
-//             statusCode: 200,
-//             body: JSON.stringify(loans)
-//         };
-//     } catch (e) {
-// return {
-//     statusCode: 500,
-//     body: e.stack
-// };
-//     }
-// };
-
-// module.exports.getLoans = async () => {
-//     try {
-//         dynamodb;
-//         const res = await Loan.scan()
-// .loadAll()
-//             .exec();
-//         const data = await res;
-//         return data;
-//     } catch (e) {
-//         return {
-//             statusCode: 500,
-//             body: e.stack
-//         };
-//     }
-// };
-
-// const aws = require("aws-sdk");
-// const dynamoDB = new aws.DynamoDB.DocumentClient();
-
-const dynamoDB = require("../dynamoConfig");
-
-exports.getLoans = async (event, body) => {
+module.exports.getLoans = async (event) => {
     try {
-        const loans = await dynamoDB
-            .scan({
-                TableName: "loans"
-            })
-            .promise();
-        return {
-            statusCode: 200,
-            body: JSON.stringify(loans.Items)
-        };
-    } catch (err) {
+        const loans = await new Promise((resolve, reject) => {
+            Loan.scan()
+                .loadAll()
+                .exec((err, loans) => {
+                    return err ? reject(err) : resolve(loans.Items);
+                });
+        });
+
+        return loans.length === 0
+            ? {
+                  statusCode: 200,
+                  body: "The database is empty",
+              }
+            : {
+                  statusCode: 200,
+                  body: JSON.stringify(loans),
+              };
+    } catch (e) {
         return {
             statusCode: 500,
-            body: err.stack
+            body: e.stack,
         };
     }
 };

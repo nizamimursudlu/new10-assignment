@@ -7,6 +7,6 @@ module.exports = dynamodb.define("Loan", {
     schema: {
         id: dynamodb.types.uuid(),
         amount: Joi.number().required(),
-        loanStatus: Joi.string().valid("offered", "disbursed")
-    }
+        status: Joi.string().valid("offered", "disbursed"),
+    },
 });

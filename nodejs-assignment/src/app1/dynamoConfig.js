@@ -1,7 +1,6 @@
-const AWS = require("aws-sdk");
-const dynamoDB = new AWS.DynamoDB.DocumentClient({
-    region: "localhost",
-    endpoint: "http://localhost:8000"
-});
+const dynamodb = require("dynamodb");
 
-module.exports = dynamoDB;
+module.exports = dynamodb.AWS.config.update({
+    region: "localhost",
+    endpoint: "http://localhost:8000",
+});
